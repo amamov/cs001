@@ -9,7 +9,7 @@
     - brew를 사용하여 VS-Code를 설치한다.
     - $ brew cask install visual-studio-code
 
-### 2. g++, lldb 설
+### 2. g++, lldb 설치
 
     - Xcode를 설치한다. (앱스토어) -> Xcode를 설치하면 자동으로 설치된다.
     - $ g++ -v ($ gcc -v) 으로 설치된 g++의 버전정보를 알 수 있다.
