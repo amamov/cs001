@@ -1,6 +1,6 @@
-# Computer Science (컴퓨터 공학 기초 이론)
+## Computer Science 
 
-👻 컴퓨터 공학 기초 이론 👻
+👻 컴퓨터 공학 기본 이론 👻
 
 1. 자료구조와 알고리즘
    - 자료구조
