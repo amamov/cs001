@@ -1,4 +1,4 @@
-## Computer Science 
+## Computer Science
 
 👻 컴퓨터 공학 기본 이론 👻
 
