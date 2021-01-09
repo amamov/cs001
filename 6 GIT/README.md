@@ -2,7 +2,8 @@
 
 - [Git 설치하기](#git-설치하기)
 - [Github에 코드 저장하기](#github에-코드-저장하기)
-- [Git으로 과거 조회하고 되돌리기](#git으로-과거-조회하고-되돌리기)
+- [Git 변경사항 확인하기](#git-변경사항-확인하기)
+- [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 
 <br>
 
@@ -175,20 +176,36 @@ $ git clone https://github.com/amamov/git-study.git
 
 <br>
 
-# Git으로 과거 조회하고 되돌리기
+# Git 변경사항 확인하기
+
+- `$ git log` : git에 commit된 변경사항을 확인할 수 있다.
+- `$ git diff commit_1_ID commit_2_ID` : commit_1_ID 기준으로 commit_2_ID와 변경사항을 비교한다.
+- `$ git diff 로컬저장소 원격저장소` : 원격 저장소와 로컬 저장소 간의 변경사항을 비교한다.
+  - ex. `$ git diff 비교대상_branch이름 origin/branch이름`
+- `$ git diff 비교대상_branch_이름 기준_branch_이름` : 브랜치간의 변경사항을 비교한다.
+
+<br>
+
+---
+
+<br>
+
+# Git으로 수정사항 reset하기
 
 repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 |           어디까지 되돌릴까?            |     옵션      |
 | :-------------------------------------: | :-----------: |
 | 작업 디렉터리가 수정하기 전으로 바뀐다. | --hard HEAD^  |
-|    add한 것 까지(옵션을 생략할 경우)    | --mixed HEAD^ |
-|              commit한 것만              | --sort HEAD^  |
+|     add하기 전 상황으로 되돌아간다.     | --mixed HEAD^ |
+|      commit한 것 까지만 취소한다.       | --sort HEAD^  |
 
 - HEAD : 가장 최근 버전에서
 - ^ : 하나 되돌리기
 
 만약 가장 최근 커밋으로부터 세 개 전으로 되돌리려면 `$ git reset --hard HEAD^^^`를 사용하면 된다.
+
+특정 커밋으로 되돌리려면 `$ git reset --hard 버전_ID` 명령을 사용하면 된다.
 
 <br>
 
