@@ -2,7 +2,7 @@
 
 - [Git 설치하기](#git-설치하기)
 - [Github에 코드 저장하기](#github에-코드-저장하기)
-- [Git으로 과거 조회하고 되돌리기](#git으로-과거-조회하고-되돌리기)
+- [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 
 <br>
 
@@ -175,15 +175,15 @@ $ git clone https://github.com/amamov/git-study.git
 
 <br>
 
-# Git으로 과거 조회하고 되돌리기
+# Git으로 수정사항 reset하기
 
 repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 |           어디까지 되돌릴까?            |     옵션      |
 | :-------------------------------------: | :-----------: |
 | 작업 디렉터리가 수정하기 전으로 바뀐다. | --hard HEAD^  |
-|    add한 것 까지(옵션을 생략할 경우)    | --mixed HEAD^ |
-|              commit한 것만              | --sort HEAD^  |
+|     add하기 전 상황으로 되돌아간다.     | --mixed HEAD^ |
+|      commit한 것 까지만 취소한다.       | --sort HEAD^  |
 
 - HEAD : 가장 최근 버전에서
 - ^ : 하나 되돌리기
