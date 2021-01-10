@@ -4,6 +4,7 @@
 - [Github에 코드 저장하기](#github에-코드-저장하기)
 - [Git 변경사항 확인하기](#git-변경사항-확인하기)
 - [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
+- [Git Branch를 다루는 방법](#git-branch를-다루는-방법)
 
 <br>
 
@@ -210,5 +211,9 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 <br>
 
 ---
+
+<br>
+
+## Git Branch를 다루는 방법
 
 <br>
