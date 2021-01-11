@@ -71,3 +71,90 @@ int main(void) {
 ```
 
 배열을 사용하면 메모리 낭비가 생길 수 있다. 이 경우, 연결 리스트를 이용하여 스택을 구현할 수 있다.
+
+```python
+# Python
+
+class Node:
+
+    """ Container """
+
+    def __init__(self, value=None, pointer=None):
+        self.value = value
+        self.pointer = pointer
+
+
+class Stack:
+
+    """ Stack with node : push, pop, peek, is_empty, size, show """
+
+    def __init__(self):
+        self.head = None
+        self.count = 0
+
+    def is_empty(self):
+        return not bool(self.head)
+
+    def push(self, item):
+        self.head = Node(item, self.head)  # 앞의 Node와 item을 담는다.
+        self.count += 1
+
+    def pop(self):
+        if self.is_empty():
+            print("Stack is empty.")
+        else:
+            node = self.head
+            self.head = node.pointer
+            self.count -= 0
+            return node.value
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack is empty.")
+        else:
+            return self.head.value
+
+    def size(self):
+        return self.count
+
+    def show(self):
+        node = self.head
+        print("-- 스택 최상단 --")
+        while node:
+            print(node.value, end="\n")
+            node = node.pointer
+        print("-- 스택 최하단 --")
+
+
+if __name__ == "__main__":
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
+    stack.push(5)
+    stack.show()
+    print(stack.peek())
+    stack.pop()
+    stack.show()
+
+"""
+[출력 결과]
+-- 스택 최상단 --
+5
+4
+3
+2
+1
+-- 스택 최하단 --
+5
+-- 스택 최상단 --
+4
+3
+2
+1
+-- 스택 최하단 --
+"""
+
+
+```
