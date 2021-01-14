@@ -246,4 +246,51 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
-##
+## github를 이용하여 협업하기
+
+### git remote (-v)
+
+원격저장소 <b>조회(추가)하기</b>
+
+- 내 로컬 repository와 상호작용하고 있는 (혹은 할 수 있는) 원격 저장소들의 목록을 조회할 수 있다.
+- `-v`옵션 : 단축이름과 URL 같이 보기
+- `$ git remote add <단축이름> <URL>` : 기존 워킹 디렉터리에 새 원격저장소를 추가하는 명령어
+  - `$ git remote add origin <URL>` : URL에 있는 원격저장소를 origin이라는 이름으로 추가하기
+- `$ git remote rm <단축이름>` : 단축이름의 원격저장소와의 연결을 삭제한다.
+
+<br>
+
+### git push
+
+원격저장소에 **밀어넣기**
+
+- `$ git push -u origin main` : 내 repository의 main 브랜치를 origin의 main 브랜치로 push한다.
+  - `-u` : origin main을 디폴트로 지정. 즉, `$ git push`, `$ git pull`를 할 때 디폴트로 origin main에 push, pull한다.
+
+<br>
+
+### git pull
+
+원격저장소 **갖고 와서 합치기**
+
+- `$ git pull (origin main)` : origin을 내 repository의 main 브랜치로 가지고 온다.(merge)
+
+<br>
+
+### git fetch
+
+원격저장소 **일단 갖고만 오기**
+
+- `$ git fetch (origin main)` : origin을 로컬 repository에 merge하지 말고 일단 가지고 온다.
+- `$ git checkout origin/main` : origin/main 임시 브랜치로 바꾼다. -> origin의 변경된 사항을 확인할 수 있다.
+
+<br>
+
+### git clone
+
+원격저장소 **복사하기**
+
+- `$ git clone <URL>` : URL에 있는 원격 저장소 내용을 현재 디렉터리에 복사해오기.
+  - origin 자동 생성. 따라서 `remote add`는 할 필요 없다.
+
+<br>
