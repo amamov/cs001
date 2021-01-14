@@ -177,7 +177,7 @@ $ git clone https://github.com/amamov/git-study.git
 
 <br>
 
-# Git 변경사항 확인하기
+## Git 변경사항 확인하기
 
 - `$ git log` : git에 commit된 변경사항을 확인할 수 있다.
 - `$ git diff commit_1_ID commit_2_ID` : commit_1_ID 기준으로 commit_2_ID와 변경사항을 비교한다.
@@ -191,15 +191,15 @@ $ git clone https://github.com/amamov/git-study.git
 
 <br>
 
-# Git으로 수정사항 reset하기
+## Git으로 수정사항 reset하기
 
 repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
-|           어디까지 되돌릴까?            |     옵션      |
-| :-------------------------------------: | :-----------: |
-| 작업 디렉터리가 수정하기 전으로 바뀐다. | --hard HEAD^  |
-|     add하기 전 상황으로 되돌아간다.     | --mixed HEAD^ |
-|      commit한 것 까지만 취소한다.       | --sort HEAD^  |
+|            어디까지 되돌릴까?            |     옵션      |
+| :--------------------------------------: | :-----------: |
+| 작업 디렉터리가 수정하기 전으로 바뀐다.  | --hard HEAD^  |
+| add하기 전 상황으로 되돌아간다. (디폴트) | --mixed HEAD^ |
+|       commit한 것 까지만 취소한다.       | --soft HEAD^  |
 
 - HEAD : 가장 최근 버전에서
 - ^ : 하나 되돌리기
@@ -207,6 +207,12 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 만약 가장 최근 커밋으로부터 세 개 전으로 되돌리려면 `$ git reset --hard HEAD^^^`를 사용하면 된다.
 
 특정 커밋으로 되돌리려면 `$ git reset --hard 버전_ID` 명령을 사용하면 된다.
+
+`$ git add .`으로 stage에 올라간 파일들을 `$ git reset HEAD`로 취소할 수 있다.
+
+<br>
+
+> `reset` 대신에 `revert`를 사용하면 되돌린 버전 이후의 버전들은 모두 유지되고, revert되었다는 사실을 담은 commit만 새로 추가된다. 즉, `reset`은 과거 자체를 바꾸는 명령어이고, `revert`는 과거를 변경시켰다는 새로운 commit으로써 새로운 commit을 만드는 명령이다.
 
 <br>
 
@@ -235,3 +241,9 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
   - 해당하는 브랜치를 삭제한다.
 
 <br>
+
+--
+
+<br>
+
+##
