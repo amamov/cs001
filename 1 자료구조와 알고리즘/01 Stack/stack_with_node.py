@@ -9,7 +9,7 @@ class Node:
 
 class Stack:
 
-    """ Stack with node """
+    """ 포인터 기반의 연결 방식 """
 
     def __init__(self):
         self.head = None
