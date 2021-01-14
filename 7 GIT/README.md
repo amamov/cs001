@@ -208,7 +208,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 특정 커밋으로 되돌리려면 `$ git reset --hard 버전_ID` 명령을 사용하면 된다.
 
-`$ git add .`으로 stage에 올라간 파일들을 `$ git reset HEAD`로 취소할 수 있다.
+> `$ git add .`으로 stage에 올라간 파일들을 `$ git reset HEAD`로 취소할 수 있다.
 
 <br>
 
