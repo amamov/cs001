@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define SIZE 10000
-#define INF 9999999
+#define INF 999999
 
 int stack[SIZE];
 int top = -1;
