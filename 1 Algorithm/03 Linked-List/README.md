@@ -72,7 +72,7 @@ int main(void) {
 - 필요할 때마다 메모리 공간을 할당 받는다.
 - 연결 리스트로 스택과 큐를 구현할 수 있다.
 
-<img src="../images/1/linkedlist1.png" alt="linkedlist" width="100%" />
+<img src="../../images/1/linkedlist1.png" alt="linkedlist" width="100%" />
 
 <br>
 <br>
@@ -83,7 +83,7 @@ int main(void) {
 - 일반적으로 연결 리스트의 시작 노드를 헤드(Head)라고 하며 별도로 관리한다.
 - 다음 노드가 없는 끝 노드의 다음 위치 값으로는 NULL을 넣는다.
 
-<img src="../images/1/linkedlist2.png" alt="linkedlist" width="100%" />
+<img src="../../images/1/linkedlist2.png" alt="linkedlist" width="100%" />
 
 <br>
 <br>
@@ -126,7 +126,7 @@ int main(void) {
 
 연결 리스트 삽입 과정은 아래와 같다.
 
-<img src="../images/1/linkedlist3.png" alt="linkedlist" width="100%" />
+<img src="../../images/1/linkedlist3.png" alt="linkedlist" width="100%" />
 
 <br>
 <br>
@@ -247,4 +247,4 @@ int main(void) {
 - 양방향 연결 리스트는 머리 (Head)와 꼬리(Tail)를 모두 가진다는 특징이 있다.
 - 양방향 연결 리스트의 각 노드는 앞 노드와 뒤 노드의 정보를 모두 저장하고 있다.
 
-<img src="../images/1/linkedlist4.png" alt="linkedlist" width="100%" />
+<img src="../../images/1/linkedlist4.png" alt="linkedlist" width="100%" />
