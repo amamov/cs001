@@ -297,6 +297,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
   - origin 자동 생성. 따라서 `remote add`는 할 필요 없다.
 - `$ git clone <URL> --branch <branch> --single-branch <folder>`
   - URL에 있는 원격저장소의 특정 branch를 clone하여 folder명을 지정한다.
+- `git clone`시에 origin이 자동으로 생성되므로 이를 없애주려면, `$ rm -rf .git` 명령어를 사용하면 된다.
 
 <br>
 
