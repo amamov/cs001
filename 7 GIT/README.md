@@ -5,6 +5,9 @@
 - [Git 변경사항 확인하기](#git-변경사항-확인하기)
 - [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 - [Git Branch를 다루는 방법](#git-branch를-다루는-방법)
+- [원격 저장소를 이용하기](#원격-저장소를-이용하기)
+- [github를 사용하여 협업하기](#github를-사용하여-협업하기)
+- [git playground](http://try.github.io)
 
 <br>
 
@@ -246,7 +249,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
-## github를 이용하여 협업하기
+## 원격 저장소를 이용하기
 
 ### git remote (-v)
 
@@ -292,5 +295,65 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 - `$ git clone <URL>` : URL에 있는 원격 저장소 내용을 현재 디렉터리에 복사해오기.
   - origin 자동 생성. 따라서 `remote add`는 할 필요 없다.
+- `$ git clone <URL> --branch <branch> --single-branch <folder>`
+  - URL에 있는 원격저장소의 특정 branch를 clone하여 folder명을 지정한다.
+
+<br>
+
+---
+
+<br>
+
+## github를 사용하여 협업하기
+
+joy라는 사용자와 amamov라는 사용자가 협업을 한다고 가정하자. joy가 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
+
+### 1. 협업 대상 repository fork 하기
+
+amamov는 `joy/REPO`에 들어가서 fork 버튼을 누른다.
+
+<br>
+
+### 2. fork 해온 곳에서 clone하기
+
+amamov는 자신이 fork한 repository를 clone한다.
+
+<br>
+
+### 3. branch를 만들고 작성하고자 하는 코드(commit) 편집 후에 push
+
+1. amamov는 clone한 REPO에 들어가서 `$ git branch newbranch` 명령을 통해 newbranch라는 branch를 만든다.
+
+2. `$ git checkout newbranch` 명령으로 newbranch에 들어간다.
+
+3. amamov는 newbranch에서 코드를 작성하고 파일을 만드는 등 작업을 한다.
+   - `$ git add .`
+   - `$ git commit`
+     - `i`를 누르고 내용 작성 후에 `:wq!`으로 저장하고 나간다.
+   - `$ git push origin newbranch`
+
+<br>
+
+### 4. pull request
+
+1. amamov는 자신이 fork한 REPO repository에 들어가기 위해 github에 들어간다.
+
+2. github의 해당 repository에 들어가서 `Compare & Pull request` 버튼을 누른다.
+
+3. 그 다음 `Create pull request`를 눌러서 pull request를 시도한다.
+
+<br>
+
+### 5. Merge pull request
+
+1. joy는 github에 amamov가 pull request한 `amamov:newbranch`가 보인다.
+
+2. 만약 충돌이 발생할 경우 충돌을 해결한다.
+
+3. `Merge pull request` 버튼으로 병합을 받아준다.
+
+   - **revert**를 이용하여 병합 이전으로 돌아갈 수 있다.
+
+4. 성공적으로 병합이 되었다면 amamov는 newbranch를 지워준다.
 
 <br>
