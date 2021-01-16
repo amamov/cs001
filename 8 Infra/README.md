@@ -55,11 +55,6 @@
 - 각 OS에 맞게 Docker를 설치하고, 버전을 확인한다.
   - "Error response from daemon: Bad response from docker engine"와 같은 메세지가 출력될 경우, docker daemon이 실행 중이 아니거나, root 권한이 필요할 수 있다. linux / mac에서는 `$ sudo docker --version` 명령어를 사용한다.
 - MAC : 그냥 다운받으면 된다.
-- 리눅스 : 각 리눅스 배포판에서 지원하는 명령으로 손쉬운 설치가 가능하다.
-  - `$ sudo apt-get update`
-  - `$ sudo apt-get install docker-ce docker-ce-cli containered.io`
-  - `$ sudo systemctl enable docker`
-  - `$ sudo systemctl start docker`
 
 <br>
 
