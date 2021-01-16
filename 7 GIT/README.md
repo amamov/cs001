@@ -358,3 +358,13 @@ amamov는 자신이 fork한 repository를 clone한다.
 4. 성공적으로 병합이 되었다면 amamov는 newbranch를 지워준다.
 
 <br>
+
+## 6. joy가 REPO repository를 수정하였을 때 amamov가 수정한 main을 가져오는 방법
+
+`$ git remote add upstream <joy-URL>`
+
+`$ git fetch upstream`
+
+`$ git checkout main`
+
+`$ git merge upstream/main`
