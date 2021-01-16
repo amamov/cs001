@@ -307,7 +307,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 ## github를 사용하여 협업하기
 
-joy라는 사용자와 amamov라는 사용자가 협업을 한다고 가정하자. joy가 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
+joy라는 팀장과 amamov라는 팀원이 협업을 한다고 가정하자. 팀장이 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
 
 ### 1. 협업 대상 repository fork 하기
 
@@ -347,7 +347,7 @@ amamov는 자신이 fork한 repository를 clone한다.
 
 ### 5. Merge pull request
 
-1. joy는 github에 amamov가 pull request한 `amamov:newbranch`가 보인다.
+1. 탐장은 github에 amamov가 pull request한 `amamov:newbranch`가 보인다.
 
 2. 만약 충돌이 발생할 경우 충돌을 해결한다.
 
@@ -355,16 +355,27 @@ amamov는 자신이 fork한 repository를 clone한다.
 
    - **revert**를 이용하여 병합 이전으로 돌아갈 수 있다.
 
-4. 성공적으로 병합이 되었다면 amamov는 newbranch를 지워준다.
+4. (성공적으로 병합이 되었다면 관리를 위해 amamov는 newbranch를 지워준다.)
 
 <br>
 
-## 6. joy가 REPO repository를 수정하였을 때 amamov가 수정한 main을 가져오는 방법
+### 6. 팀장(repository 관리자)이 REPO repository를 수정하였을 때 amamov(팀원)가 팀장이 수정한 main을 가져와야 한다.
 
-`$ git remote add upstream <joy-URL>`
+1. `$ git remote add upstream <joy-URL>`
+   - "upstream"이라는 이름으로 joy의 repository URL을 remote한다. (최초 한 번만)
 
-`$ git fetch upstream`
+2. `$ git fetch upstream`
+   - upstream에 fetch한다.(일단 가져온다.)
+   - 변겨 사항 확인 가능
 
-`$ git checkout main`
+3. `$ git checkout main`
+   - "main" branch로 들어간다.
 
-`$ git merge upstream/main`
+4. `$ git merge upstream/main`
+   - "upstream"과 main을 병합한다.
+
+5. `$ git checkout newbranch`
+	- 작업용 branch인 "newbranch"에 들어간다.
+
+6. `$ git merge main`
+	- "main" branch와 현재 branch인 "new branch"를 병합한다.
