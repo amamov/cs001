@@ -309,6 +309,8 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 joy라는 팀장과 amamov라는 팀원이 협업을 한다고 가정하자. 팀장이 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
 
+amamov는 팀장이 만든 repository를 clone한 후, 로컬의 "amamov/main" branch에서 팀장의 코드를 받아오고 "amamov/newbranch" branch에서 받아온 코드(main)를 병합하여 추가로 작업한 코드와 함께 팀장에게 pull request를 보낸다. pull request를 받은 팀장은 변경 사항을 체크하고 "joy/main"에 최종적으로 병합한다.
+
 ### 1. 협업 대상 repository fork 하기
 
 amamov는 `joy/REPO`에 들어가서 fork 버튼을 누른다.
