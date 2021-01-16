@@ -325,15 +325,18 @@ amamov는 자신이 fork한 repository를 clone한다.
 
 ### 3. branch를 만들고 작성하고자 하는 코드(commit) 편집 후에 push
 
-1. amamov는 clone한 REPO에 들어가서 `$ git branch newbranch` 명령을 통해 newbranch라는 branch를 만든다.
+1. amamov는 clone한 REPO에 들어가서 `$ git branch newbranch` 명령을 통해 "newbranch"라는 branch를 만든다.
+   - "amamov/main" branch는 팀장의 코드를 가져오는 순수 branch이다. (amamov가 추가적으로 코드 작업을 하지 않고 순수하게 팀장의 코드를 가져온 branch)
+   - "amamov/newbranch" branch는 팀장의 코드와 amamov가 추가적으로 코드 작업을 진행한 branch이다.
 
-2. `$ git checkout newbranch` 명령으로 newbranch에 들어간다.
+2. `$ git checkout newbranch` 명령으로 "newbranch"에 들어간다.
 
 3. amamov는 newbranch에서 코드를 작성하고 파일을 만드는 등 작업을 한다.
    - `$ git add .`
    - `$ git commit`
-     - `i`를 누르고 내용 작성 후에 `:wq!`으로 저장하고 나간다.
+     - `i`를 누르고 내용 작성 후에 esc키를 누르고 `:wq!`명령어로 저장하고 나간다.
    - `$ git push origin newbranch`
+     - "newbranch"를 origin에 push한다.
 
 <br>
 
@@ -357,11 +360,11 @@ amamov는 자신이 fork한 repository를 clone한다.
 
    - **revert**를 이용하여 병합 이전으로 돌아갈 수 있다.
 
-4. (성공적으로 병합이 되었다면 관리를 위해 amamov는 newbranch를 지워준다.)
+4. (관리를 위해 amamov는 newbranch를 지우는 경우가 있다.)
 
 <br>
 
-### 6. 팀장(repository 관리자)이 REPO repository를 수정하였을 때 amamov(팀원)가 팀장이 수정한 main을 가져와야 한다.
+### 6. 팀장(repository 관리자)이 REPO repository를 수정하였을 때 amamov(팀원)가 팀장이 수정한 "joy/main"을 가져와야 한다.
 
 1. `$ git remote add upstream <joy-URL>` <b>(최초 한 번만)</b>
    - "upstream"이라는 이름으로 joy의 repository URL을 remote한다. 
