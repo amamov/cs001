@@ -6,7 +6,7 @@
 - [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 - [Git Branch를 다루는 방법](#git-branch를-다루는-방법)
 - [원격 저장소를 이용하기](#원격-저장소를-이용하기)
-- [github 협업 플로우](#github-협업-플로우)
+- [github에서 협업을 하는 방법](#github에서-협업을-하는-방법)
 - [git playground](http://try.github.io)
 
 <br>
