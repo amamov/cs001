@@ -6,7 +6,7 @@
 - [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 - [Git Branch를 다루는 방법](#git-branch를-다루는-방법)
 - [원격 저장소를 이용하기](#원격-저장소를-이용하기)
-- [github를 사용하여 협업하기](#github를-사용하여-협업하기)
+- [github 협업 플로우](#github-협업-플로우)
 - [git playground](http://try.github.io)
 
 <br>
@@ -305,7 +305,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
-## github를 사용하여 협업하기
+## github 협업 플로우
 
 joy라는 팀장과 amamov라는 팀원이 협업을 한다고 가정하자. 팀장이 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
 
