@@ -245,7 +245,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
---
+---
 
 <br>
 
@@ -305,7 +305,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
-## github에서 협업을 하는 방법
+# github에서 협업을 하는 방법
 
 joy라는 팀장과 amamov라는 팀원이 협업을 한다고 가정하자. 팀장이 만든 repository인 프로젝트 REPO를 중심으로 협업을 진행한다고 하자.
 
@@ -365,6 +365,8 @@ amamov는 자신이 fork한 repository를 clone한다.
 <br>
 
 ### 6. 팀장(repository 관리자)이 REPO repository를 수정하였을 때 amamov(팀원)가 팀장이 수정한 "joy/main"을 가져와야 한다.
+
+amamov는 자신의 로컬 환경의 REPO에서 다음과 같으 작업을 수행한다.
 
 1. `$ git remote add upstream <joy-URL>` <b>(최초 한 번만)</b>
    - "upstream"이라는 이름으로 joy의 repository URL을 remote한다. 
