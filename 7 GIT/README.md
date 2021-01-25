@@ -366,7 +366,7 @@ amamov는 자신이 fork한 repository를 clone한다.
 
 ### 6. 팀장(repository 관리자)이 REPO repository를 수정하였을 때 amamov(팀원)가 팀장이 수정한 "joy/main"을 가져와야 한다.
 
-amamov는 자신의 로컬 환경의 REPO에서 다음과 같으 작업을 수행한다.
+amamov는 자신의 로컬 환경의 REPO에서 다음과 같은 작업을 수행한다.
 
 1. `$ git remote add upstream <joy-URL>` <b>(최초 한 번만)</b>
    - "upstream"이라는 이름으로 joy의 repository URL을 remote한다. 
