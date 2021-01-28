@@ -34,6 +34,12 @@ Management the Memory, File System, CPU, Device, etc
 
 Manipulate Linux Kernel
 
+- bash
+  - GNU 프로젝트의 일환으로 개발됨, 리눅스에서 거의 디폴트
+- sh
+- csh
+- ksh
+
 ### Lunux Shell typed
 
 - **bash** (Bourne-agin shell) : Super shell in linux

@@ -30,3 +30,5 @@
    2. `$ docker start linuxsh`
 
    3. `$ docker exec -it linuxsh /bin/bash`
+
+   4. `$ apt-get update`
