@@ -11,6 +11,8 @@
 - [man](#man)
 - [sudo](#sudo)
 - [wget](#wget)
+- [cat](#cat)
+- [grep](#grep)
 - [nano Editor](#nano-editor)
 - [vi Editor](#vi-editor)
 
@@ -137,6 +139,18 @@ sudo 명령어는 유닉스 및 유닉스 계열 운영 체제에서, 다른 사
 wget 명령어는 URL을 매개하여 파일을 다운받는다.
 
 `$ wget img_20200403c3.webp`
+
+### cat
+
+cat 명령은 파일이름을 인자로 받아서 그 내용을 쭉 이어주는 역할을 한다. 결국 어떤 내용을 받아서 그냥 그대로 터미널 화면에 뿌려주는 역할을 한다.
+
+### grep
+
+grep은 입력으로 전달된 파일의 내용에서 특정 문자열을 찾고자할 때 사용하는 명령어이다.
+
+- `$ grep Django test.txt`
+
+- `$ ls --help | grep sort`
 
 <br>
 
