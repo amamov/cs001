@@ -1,23 +1,25 @@
 # SQL
 
-## Docker MySQL 설치하기
-
-[도움되는 블로그](https://kdinner.tistory.com/27)
+## Docker MySQL 구동
 
 - `$ docker pull mysql:5.7`
 
 - `$ docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root1! --name mysql5 mysql:5.7`
 
+  - `$ docker start mysql5`
+    - mysql5 컨테이너 start
+  - `$ docker inspect mysql5 | grep IP`
+    - mysql5 container의 IP를 알 수 있다.
+
 - `$ docker exec -it mysql5 /bin/bash`
 
-- `$ cat /etc/issue`
-
-- `$ which mysql`
+  - `$ cat /etc/issue`
+  - `$ which mysql`
 
 - `$ mysql -u root -p`
 
+  - mysql 서버 접속
   - password에 아까 설정한 password인 root1!을 입력한다.
-  - mysql 세계로 들어왔다.
 
 - `$ show databases;`
 
@@ -28,3 +30,61 @@
   - mysql row를 선택한다.
 
 - `$ show tables;`
+
+<br>
+
+---
+
+<br>
+
+## DB 생성
+
+- `$ CREATE DATABASE testDB DEFAULT CHARACTER SET utf8;`
+  - testDB라는 DB를 만들고 문자 인코딩은 utf8로 한다.
+
+## DB 삭제
+
+- `$ DROP DATABASE "삭제 할 데이터베이스 명"`
+
+<br>
+
+## DB 사용자 추가
+
+- `$ CREATE user '사용자'@'호스트' IDENTIFIED BY '사용할 비밀번호';`
+  - `$ CREATE user 'amamov'@'localhost' IDENTIFIED BY '1205';`;
+  - `$ CREATE user 'amamov'@'%' IDENTIFIED BY '1205';`;
+  - 사용자 계정에 외부 권한을 부여하려면, 호스트를 '%'로 하여 계정을 추가하면 된다.
+
+## DB 사용자 삭제
+
+- `$ DROP user '사용자'@'호스트';`
+
+## DB 사용자 조회
+
+1. `$ USE mysql`
+
+2. `$ SELECT user, host FROM user;`
+
+<br>
+
+## DB 사용자 권한 부여
+
+- `$ GRENT ALL PRIVILEGES ON <DB이름>.* TO <사용자>@'호스트' IDENTIFIED BY '비밀번호';`
+
+## DB 사용자 권한 삭제
+
+- `$ REVOKE ALL ON <DB이름>.* FROM '사용자'@'호스트';`
+
+## DB 사용자 권한 확인하기
+
+- `$ SHOW GRANTS FOR '사용자'@'호스트';`
+
+<br>
+
+---
+
+<br>
+
+## MySQL WorkBranch에 연결하기
+
+[MySQL WorkBranch](https://www.mysql.com/products/workbench/)
