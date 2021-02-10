@@ -1,5 +1,7 @@
 # SQL
 
+- [SQL 기본 문법](#기본-문법)
+
 ## Docker MySQL 구동
 
 - `$ docker pull mysql:5.7`
@@ -20,6 +22,7 @@
 
   - mysql 서버 접속
   - password에 아까 설정한 password인 root1!을 입력한다.
+  - mysql에서 `SET PASSWORD = PASSWORD('11111');`으로 비밀번호 변경이 가능하다.
 
 - `$ show databases;`
 
@@ -88,3 +91,109 @@
 ## MySQL WorkBranch에 연결하기
 
 [MySQL WorkBranch](https://www.mysql.com/products/workbench/)
+
+<br>
+
+---
+
+<br>
+
+# 기본 문법
+
+[docs](https://www.tutorialspoint.com/mysql/mysql-data-types.htm)
+
+- [x] DB 조회
+- [x] DB 생성
+- [x] DB 사용하기(선택하기)
+- [x] 현재 사용하고 있는 DB 조회하기
+- [x] DB 삭제하기
+- [x] Table 조회
+- [x] Table 생성
+- [x] 특정 Table 구조 확인하기
+- [x] Table 삭제하기
+
+## SHOW
+
+- DB 목록 조회
+
+```sql
+SHOW DATABASES;
+```
+
+- Table 목록 조회
+
+```sql
+SHOW TABLES;
+```
+
+<br>
+
+## CREATE
+
+- DB 생성
+
+```sql
+CREATE DATABASE <db_name>;
+
+CREATE DATABASE test_dbdb;
+```
+
+- Table 생성
+
+```sql
+CREATE TABLE <name> (
+  <column_name> <data_type>,
+  <column_name> <data_type>);
+
+CREATE TABLE user (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  age INT NOT NULL,
+  bio TEXT NULL,
+  PRIMARY KEY(id));
+```
+
+<br>
+
+## USE
+
+- DB로 들어간다.
+
+```sql
+USE <db_name>
+```
+
+<br>
+
+## SELECT
+
+- 현재 사용중인 DB 확인
+
+```sql
+SELECT DATABASE();
+```
+
+<br>
+
+## DESCRIBE
+
+- 특정 테이블 구조 보기
+
+```sql
+DESCRIBE <table_name>
+```
+
+<br>
+
+## DROP
+
+- DB 삭제 하기, Table 삭제하기
+
+```sql
+DROP DATABASE <name>
+DROP TABLE <name>
+
+DROP TABLE user
+```
+
+<br>
