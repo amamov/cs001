@@ -1,5 +1,7 @@
 # SQL
 
+- [SQL Tutorial](https://www.w3schools.com/sql/sql_intro.asp)
+- [SQL db 기본 문법](#기본-db-문법)
 - [SQL 기본 문법](#기본-문법)
 
 ## Docker MySQL 구동
@@ -98,9 +100,10 @@
 
 <br>
 
-# 기본 문법
+# 기본 DB 문법
 
-[docs](https://www.tutorialspoint.com/mysql/mysql-data-types.htm)
+- [docs](https://www.tutorialspoint.com/mysql/mysql-data-types.htm)
+- [tutorial](https://www.w3schools.com/sql/sql_create_db.asp)
 
 - [x] DB 조회
 - [x] DB 생성
@@ -195,5 +198,23 @@ DROP TABLE <name>
 
 DROP TABLE user
 ```
+
+<br>
+
+---
+
+<br>
+
+# 기본 문법
+
+## INSERT
+
+[SQL INSERT Tutorial](https://www.w3schools.com/sql/sql_insert.asp)
+
+<br>
+
+## SELECT
+
+[SQL SELECT Tutorial](https://www.w3schools.com/sql/sql_select.asp)
 
 <br>
