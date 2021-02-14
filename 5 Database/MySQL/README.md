@@ -1,6 +1,8 @@
 # SQL
 
-- [SQL Tutorial](https://www.w3schools.com/sql/sql_intro.asp)
+- [SQL Tutorial 1](https://www.w3schools.com/sql/sql_intro.asp)
+- [SQL Tutorial 2](https://www.mysqltutorial.org/basic-mysql-tutorial.aspx)
+- [SQL IDE](https://app.popsql.com/)
 - [SQL db 기본 문법](#기본-db-문법)
 - [SQL 기본 문법](#기본-문법)
 
@@ -216,5 +218,17 @@ DROP TABLE user
 ## SELECT
 
 [SQL SELECT Tutorial](https://www.w3schools.com/sql/sql_select.asp)
+
+<br>
+
+## UPDATE
+
+[SQL UPDATE Tutorial](https://www.w3schools.com/sql/sql_update.asp)
+
+<br>
+
+## DELETE
+
+[SQL DELETE Tutorial](https://www.w3schools.com/sql/sql_delete.asp)
 
 <br>
