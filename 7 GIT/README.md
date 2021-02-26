@@ -5,7 +5,7 @@
 - [Git 변경사항 확인하기](#git-변경사항-확인하기)
 - [Git으로 수정사항 reset하기](#git으로-수정사항-reset하기)
 - [Git Branch를 다루는 방법](#git-branch를-다루는-방법)
-- [원격 저장소를 이용하기](#원격-저장소를-이용하기)
+- [Github code versioning](#github-code-versioning)
 - [github에서 협업을 하는 방법](#github에서-협업을-하는-방법)
 - [git playground](http://try.github.io)
 
@@ -249,7 +249,7 @@ repository에 올린 상태에서 `$ git reset`으로 되돌릴 수 있다.
 
 <br>
 
-## 원격 저장소를 이용하기 - github code versioning
+## Github code versioning
 
 ### git remote (-v)
 
