@@ -195,3 +195,23 @@ CGI 애플리케이션을 별도의 데몬으로 처리하는 방식은 기술�
 웹 애플리케이션 서버는 애플리케이션 프로그램의 실행 결과를 웹 서버에 전달해주며, 웹 서버는 웹 애플리케이션 서버로부터 전달받은 응답 결과를 웹 클라이언트에 전송한다.
 
 ![was](../../images/was.png)
+
+## Gunicorn
+
+- [gunicorn & django](https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/gunicorn/)
+
+- Gunicorn의 역할
+
+  - WEB Server(Nginx)로부터 서버사이드 요청을 받으면 WSGI(Gunicorn)를 통해 서버 어플리케이션(Django)으로 전달하는 역할을 함
+
+  - WSGI는 멀티 쓰레드를 만들 수 있도록하여 Request 요청이 많아지더라도 효율적으로 처리하므로 Production 환경에 사용
+
+![gunicorn](../../images/gunicorn.png)
+
+<br>
+
+![pythonwas](../../images/pythonwas.png)
+
+`Private Physical Server` 위의 녹색 선으로 그려진 모든 것들을 합쳐서 `WAS(Web Application Server)` 라고 부른다.
+
+[gunicorn vs uwsgi](https://elastic7327.medium.com/python%EA%B0%9C%EB%B0%9C%EC%9E%90-uwsgi%EB%A5%BC-%EB%B2%84%EB%A6%AC%EA%B3%A0-gunicorn%EC%9C%BC%EB%A1%9C-%EA%B0%88%EC%95%84%ED%83%80%EB%8B%A4-df1c95f220c5)
