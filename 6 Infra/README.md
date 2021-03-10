@@ -1,8 +1,20 @@
+# Django + DRF + React + Docker = Full Stack
+
+- [👻 Django Note 👻](https://github.com/amamov/DRF-React-Fullstack/tree/main/1%20django%20note)
+- [👻 React Note 👻](https://github.com/amamov/DRF-React-Fullstack/tree/main/2%20react%20note)
+- Fullstack Toy Project : backend + frontend
+
+<br>
+
+---
+
+<br>
+
 # 프로젝트 배포 (Docker + Azure)
 
 [인프라 관련 문서](https://docs.microsoft.com/ko-kr/learn/paths/administer-containers-in-azure/)
 
-- [Docker 기반으로 Django와 React App Azure 인프라에 배포하기](#docker-기반으로-azure-인프라에-배포하기)
+- [Docker와 클라우드 서비스를 사용하여 배포하기](#docker와-클라우드-서비스를-사용하여-배포하기)
 
 <br>
 
@@ -287,15 +299,18 @@ CMD ["python3", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 
 <br>
 
-# Docker 기반으로 Azure 인프라에 배포하기
+# Docker와 클라우드 서비스를 사용하여 배포하기
+
+- [Azure portal](https://portal.azure.com/#home)
+- [AWS Console](https://aws.amazon.com/ko/console)
 
 <br>
 
-## Azure Storage에 Static & Media 파일 올리기
+## Static & Media 파일 올리기
 
-[Azure portal](https://portal.azure.com/#home)
+static 파일과 media 파일을 배포할 때 [django-storages](https://django-storages.readthedocs.io/en/latest/) 라이브러리를 사용하면 AWS-S3, Azure-strage, Google-cloud-storage 등을 쉽게 구축할 수 있다.
 
-static 파일과 media 파일을 배포할 때 [django-storages](https://django-storages.readthedocs.io/en/latest/) 라이브러리를 사용하면 AWS-s3, Azure-strage, Google-cloud-storage 등을 쉽게 구축할 수 있다.
+### Azure Storage 사용하기
 
 1. `$ pip install "django-storages[azure]"` : `django-storages` 라이브러리 설치
 
@@ -359,6 +374,12 @@ LOGGING = {
 
 `$ python manage.py collectstatic --settings=config.settings.prod` 명령으로 `Storage accounts`에 빌드할 수 있다.
 
+### AWS S3 사용하기
+
+1. `$ pip install django-storages`
+
+2. Azure Storage와 비슷한 방법으로 올리면 된다. 필자의 프로젝트중 hotel-api repository에 관련 파일이 있다.
+
 <br>
 
 ---
@@ -366,6 +387,140 @@ LOGGING = {
 <br>
 
 ## Django 프로젝트를 Dockerizing하기
+
+### 빠르게 보기 + DB
+
+```python
+# backend/prod.txt
+
+-r common.txt
+
+django-storages
+gunicorn
+psycopg2-binary
+# mysqlclient
+```
+
+```Dockerfile
+# backend/Dockerfile
+
+FROM ubuntu:18.04
+
+# default set up
+RUN apt-get update && apt-get install -y python3-pip && apt-get clean
+
+# use mysql set up
+#RUN apt-get update && \
+#    apt install -y gcc python3-dev python3-pip mysql-client-core-5.7 libmysqlclient-dev && \
+#    apt-get clean
+
+WORKDIR /djangoproject
+ADD . /djangoproject
+RUN pip3 install -r requirements.txt
+
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE 80
+CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:80"]
+```
+
+```.dockerignore
+/media
+/static
+db.sqlite3
+```
+
+```python
+# backend/config/settings/prod.py
+
+import os
+from .common import *
+
+# Django
+SECRET_KEY = os.environ["SECRET_KEY"]
+
+DEBUG = False
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+
+# CORS
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "").split(",")
+
+
+# DRF
+REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+    "rest_framework.renderers.JSONRenderer",
+]
+
+# Static & Media : AWS S3
+STATICFILES_STORAGE = "config.storages.S3StaticStorage"
+DEFAULT_FILE_STORAGE = "config.storages.S3MediaStorage"
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_S3_REGION_NAME = os.environ["AWS_S3_REGION_NAME"]  # ap-northeast-2 버킷 리전
+AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]  # 버킷이름
+AWS_S3_CUSTOM_DOMAIN = (
+    f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"  # 버킷에 대한 URL 도메인
+)
+AWS_DEFAULT_ACL = os.environ["AWS_DEFAULT_ACL"]  # "public-read" 버켓에 대한 엑세스 권한
+
+# Database : default : postgredb
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
+        "HOST": os.environ["DB_HOST"],
+        "PORT": os.environ["DB_PORT"],
+        "NAME": os.environ["DB_NAME"],
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_PASSWORD"],
+    }
+}
+
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_exiting_loggers": False,
+    "handlers": {"console": {"level": "ERROR", "class": "logging.StreamHandler",},},
+    "loggers": {"django": {"handlers": ["console"], "level": "ERROR",},},
+}
+```
+
+[DB 셋업하기↓](#postgresql-db와-연동하고-docker를-통해-마이그레이션-수행하기)
+
+**Azure에서 기본적으로 PostgreSQL DB 만들 때 DB_NAME의 기본값은 postgres이고 이는 수정이 가능하다.**
+
+1. `$ docker build -t amamov/myapp:1.0.0 .`
+
+2. Container 실행
+
+```shell
+$ docker run --rm --publish 9000:80 \
+    -e SECRET_KEY="" \
+    -e ALLOWED_HOSTS="" \
+     -e CORS_ALLOWED_ORIGINS="" \
+    -e AWS_ACCESS_KEY_ID="" \
+    -e AWS_SECRET_ACCESS_KEY="" \
+    -e AWS_S3_REGION_NAME="" \
+    -e AWS_STORAGE_BUCKET_NAME="" \
+    -e AWS_DEFAULT_ACL="" \
+    -e DB_NAME= \
+    -e DB_USER= \
+    -e DB_PASSWORD= \
+    -e DB_HOST= \
+    -e DB_PORT= \
+    -it amamov/myapp:1.0.0 sh
+```
+
+3. 수행할 명령어
+
+```shell
+$ python3 manage.py collectstatic --settings=config.settings.prod
+$ python3 manage.py migrate --settings=config.settings.prod
+$ python3 manage.py createsuperuser --settings=config.settings.prod
+```
+
+### 천천히 음미하기
 
 현재 프로젝트구조가 다음과 같다고 하자.
 
@@ -522,6 +677,8 @@ LOGGING = {
 
 4. docker로 빌드하고 서버 실행해보기
    `$ docker build -t amamov_dj .` 명령어로 빌드한 후 다음 명령어로 환경변수 설정을 하고 shell을 실행한다.
+
+**Azure에서 기본적으로 PostgreSQL DB 만들 때 DB_NAME의 기본값은 postgres이고 이는 수정이 가능하다.**
 
 ```shell
 docker run --rm --publish 9000:80 \
