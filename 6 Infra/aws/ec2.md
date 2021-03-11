@@ -62,7 +62,7 @@
 
 ### 2. gunicorn 셋업
 
-1. `sudo vi /etc/systemd/system/gunicorn.service` # systemd 에 gunicorn 등록
+1. `sudo vi /etc/systemd/system/gunicorn.service` # 서비스 등록 스크립트 생성
 
 ```js
 [Unit]
@@ -124,6 +124,8 @@ DB_HOST=localhost
 
 7. `systemctl status gunicorn` # 상태 확인
 
+8. `sudo vi /var/log/syslog` # 구동 실패시 에러 로그는 확인 가능.
+
 ### 3. nginx 셋업
 
 1. `sudo apt -y install nginx` # 아까 설치했지만...
@@ -153,11 +155,11 @@ server {
 }
 ```
 
-3. `sudo ln -s /etc/nginx/sites-available/PROJECT_NAME /etc/nginx/sites-enabled`
+3. `sudo ln -s /etc/nginx/sites-available/PROJECT_NAME /etc/nginx/sites-enabled` # 사이트 추가
 
-4. `sudo nginx -t`
+4. `sudo nginx -t` # nginx 설정 문법 검사 및 재기동
 
-5. `sudo systemctl restart nginx`
+5. `sudo systemctl restart nginx` # nginx 설정 문법 검사 및 재기동
 
 6. `http://My_Elastic_IP` 접속시 Django 화면이 보이면 성공!
 
