@@ -12,5 +12,3 @@
 7. [Infra](https://github.com/amamov/Computer-Science/tree/main/8%20Infra)
 
 <br>
-
-본 문서의 저작권은 모두 amamov (Yoon - Sang Seok)에 있습니다.
