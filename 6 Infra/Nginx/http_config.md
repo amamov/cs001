@@ -2,6 +2,8 @@
 
 HTTP 핵심 모듈은 HTTP 구성에 쓰이는 필수 구성품으로, 가상 호스트라고도 하는 웹 사이트를 설정해서 제공하는 데 사용된다.
 
+<br>
+
 ## HTTP 핵심 모듈
 
 HTTP 핵심 모듈은 HTTP 서버의 모든 기반 블록, 지시어, 변수를 포함하는 구성 요소이다. 이 모듈은 Nginx를 컴파일하고자 구성할 때 기본으로 활성화된다.
@@ -9,6 +11,8 @@ HTTP 핵심 모듈은 HTTP 서버의 모든 기반 블록, 지시어, 변수를 
 (이 모듈은 빌드에 포함되지 않게 할 수 있기 때문에 사실 옵션이다. 이 모듈은 컴파일 과정에서 빼면 HTTP 기능이 전혀 동작하지 않을 뿐 아니라 다른 HTTP 모듈도 컴파일되지 않게 된다.)
 
 이 모듈은 모든 Nginx 모듈 중에서 가장 규모가 커서 매우 많은 지시어와 변수를 제공한다.
+
+<br>
 
 ## 구조 블록
 
@@ -24,6 +28,8 @@ HTTP 핵심 모듈은 HTTP 서버의 모든 기반 블록, 지시어, 변수를 
 
 http 블록으로 정의된 HTTP 영역은 웹 관련 구성 전체를 망라한다. 이 블록은 호스팅하는 도메인이나 하위 도메인을 정의하는 하나 이상의 server 블록을 포함한다. 각 웹 사이트마다 특정 요청 URI나 요청 URI 패턴에 부가 설정을 적용할 수 있는 location 블록을 여러 번 정의할 수 있다.
 
+<br>
+
 ## 소켓과 호스트 구성
 
 아래의 나열된 지시어로는 가상 호스트를 구성할 수 있다. 가상 호스트는 호스트 이름이나 IP 주소와 포트의 조합으로 식별되는 server 블록을 만들어 실현된다.
@@ -31,6 +37,30 @@ http 블록으로 정의된 HTTP 영역은 웹 관련 구성 전체를 망라한
 > [소켓이란?](https://helloworld-88.tistory.com/215)
 
 > [네트워크 통신(socket)을 하는 방법](https://nowonbun.tistory.com/315)
+
+```conf
+http {
+  sendfile on;
+  tcp_nopush on;
+  tcp_nodelay on;
+  keepalive_timeout 10; #기본값:75
+  types_hash_max_size 2048;
+
+  server_tokens off;
+  server_names_hash_bucket_size 64; #기본값:32
+  server_names_hash_max_size 2048; #기본값:512
+  # server_name_in_redirect off;
+
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
+
+  access_log off; log_not_found off;
+  error_log /var/log/nginx/error.log warn;
+
+  include /etc/nginx/conf.d/*.conf;
+  include /etc/nginx/sites-enabled/*;
+}
+```
 
 ### listen
 
@@ -133,6 +163,35 @@ TCP_NOPUSH나 TCP_CORK(리눅스) 소켓 옵션을 활성화 또는 비활성화
 
 - 기본값 : 0
 
+### server_token
+
+`server_tokens off;`
+
+헤더에 Nginx의 버전을 숨기는 역할을 하므로 보안상 설정하는 것이 좋다.
+
+### server_names_hash_bucket_size, server_names_hash_max_size
+
+```conf
+server_names_hash_bucket_size 64; #기본값:32
+server_names_hash_max_size 2048; #기본값:512
+```
+
+호스트의 도메인 이름에 대한 공간을 설정하는 것으로 이 값이 낮을 경우 많은 가상 호스트 도메인을 등록한다거나, 도메인 이름이 길 경우에 bucket 공간이 모자라 에러가 생길 수 있으므로 넉넉하게 설정한다.
+
+### access_log
+
+`access_log off;`
+
+웹 서버를 운영하면서 접속자의 IP와 리퍼러 정보등을 수집하는 것이 운영 및 보안을 위해 중요하지만 http block에서 access_log를 설정하면 하나의 파일에 모든 접속 로그가 남게 되어 관리가 불편하기 때문에 각 가상 호스트마다 로그를 배분하는 것이 관리가 편하므로 http block에서는 off로 처리한다.
+
+### error_log
+
+`error_log /var/log/nginx/error.log warn;`
+
+access_log를 off한 이유와 마찬가지로 중요한 오류 이외에는 로그를 남기지 않게 설정해서 최대한 로그로 인해 디스크 엑세스를 하지 않게 설정한다.
+
+<br>
+
 ## 경로와 문서
 
 아래의 지시어들은 각 웹 사이트가 제공할 문서를 구성하는 지시어를 설명한다. 최상위 문서 위치, 사이트 색인, 오류 페이지 같은 것이다.
@@ -198,6 +257,8 @@ HTTP 응답 코드에 맞춰 URI를 조작하거나 이 코드를 다른 코드�
 
 - 기본값 : off
 
+<br>
+
 ## 클라이언트 요청
 
 ### keepalive_requests
@@ -211,6 +272,8 @@ HTTP 응답 코드에 맞춰 URI를 조작하거나 이 코드를 다른 코드�
 - 기본값 : 100
 
 ### keepalive_timeout
+
+> 이 값이 높으면 불필요한 커넥션을 유지하기 때문에 낮은 값(10) 또는 0으로 설정하는 것이 좋다.
 
 - 맥락 : http, server, location
 
@@ -227,6 +290,8 @@ HTTP 응답 코드에 맞춰 URI를 조작하거나 이 코드를 다른 코드�
   - `keepalive_timeout 75`
 
 - 기본값 : 75
+
+<br>
 
 ## location 블록
 

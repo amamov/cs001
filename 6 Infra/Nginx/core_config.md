@@ -9,6 +9,27 @@
 
 > [Nginx Config](https://www.digitalocean.com/community/tools/nginx)
 
+```
+├── conf.d
+├── fastcgi.conf
+├── fastcgi_params
+├── koi-utf
+├── koi-win
+├── mime.types
+├── nginx.conf
+├── proxy_params
+├── scgi_params
+├── sites-available
+│   └── default
+├── sites-enabled
+│   └── default -> /etc/nginx/sites-available/default
+├── snippets
+│   ├── fastcgi-php.conf
+│   └── snakeoil.conf
+├── uwsgi_params
+└── win-utf
+```
+
 - `nginx.conf` : 웹 서버의 기본 구성
 - `mime.types` : 파일 확장자와 연관된 MIME 타입의 목록
 - `fastcgi_params` : Fast CGI 관련 구성
