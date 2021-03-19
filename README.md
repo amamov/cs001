@@ -2,6 +2,8 @@
 
 🏴‍☠️ Computer Science 전공 이론 정리 🏴‍☠️
 
+<br>
+
 ### 0. [C 언어](https://github.com/amamov/Computer-Science/tree/main/0%20C%2B%2B)
 ### 1. [자료구조와 알고리즘](https://github.com/amamov/Computer-Science/tree/main/1%20Algorithm)
 ### 2. [컴퓨터 시스템](https://github.com/amamov/cs001/tree/main/2%20Computer%20System)
