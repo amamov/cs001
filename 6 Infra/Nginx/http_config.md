@@ -12,10 +12,10 @@ HTTP 핵심 모듈은 HTTP 서버의 모든 기반 블록, 지시어, 변수를 
 
 ## 구조 블록
 
-- http
+- **http**
   - 이 블록은 구성 파일의 최상위에 삽입된다. Nginx의 HTTP 관련된 모듈 전부의 지시어와 블록은 http 블록에만 정의할 수 있다.
   - 그럴만한 이유는 없지만, 이 블록은 여러 번 추가될 수 있는데, 이런 경우 뒤에 오는 블록의 지시어 값이 선행되는 블록의 지시어 값을 재지정하게 된다.
-- server
+- **server**
   - 이 블록으로는 웹사이트 하나를 선언할 수 있다. 다시 말해 Nginx가 특정 웹 사이트를 인식하고 그 구성을 얻는 블록이다.
   - 이 블록은 http 블록 안에서만 사용할 수 있다.
 - location
@@ -186,4 +186,113 @@ HTTP 응답 코드에 맞춰 URI를 조작하거나 이 코드를 다른 코드�
   - `error_page 404 @notfound;` # 지정한 location 블록으로 이동
   - `error_page 404 =200 /index.html;` # 404 오류일 경우, 응답 코드를 200 ok로 바꾸고 index.html로 경로를 돌림
 
-### recursive*error*
+### recursive_error_pages
+
+- 맥락 : http, server, location
+
+가끔 error_page 지시어로 제공되는 오류 페이지 자체가 오류를 일으켜서 다시 error_page로 들어가는 경우가 있다.
+
+이 지시어는 반복적인 오류 페이지 진입을 허용하거나 막는다.
+
+- 구문 : on, off
+
+- 기본값 : off
+
+## 클라이언트 요청
+
+### keepalive_requests
+
+- 맥락 : http, server, location
+
+한 연결을 닫지 않고 유지하면서 제공할 최대 효청 횟수를 지정한다.
+
+- 구문 : 숫자 값
+
+- 기본값 : 100
+
+### keepalive_timeout
+
+- 맥락 : http, server, location
+
+서버가 유지되는 연결을 끊기 전에 몇 초를 기다릴지 정의하는 지시어다.
+
+옵션인 두 번째 매개변수는 `Keep-Alive: timeout= HTTP` 응답 헤더의값으로 전달된다.
+
+이 시간이 지난 후에는 클라이언트가 스스로 연결을 끊게 하려는 의도이다.
+
+어떤 브라우저는 이 설정을 무시한다. (인터넷 익스플로어)
+
+- 구문 : `keepalive_timeout 시간1 [시간2]`
+
+  - `keepalive_timeout 75`
+
+- 기본값 : 75
+
+## location 블록
+
+Nginx는 프로토콜 수준(http 블록)에서 서버 수준(server 블록)과 요청된 URI 수준(location 블록)까지 세 단계에 걸쳐 구성을 세부 조정할 수 있다.
+
+Nginx는 location 블록을 정의하면서 요청된 문서의 URI와 비교할 패턴을 지정할 수 있게 해준다.
+
+```conf
+server {
+    server_name website.com
+    location /admin/ {
+        # http://website.com/admin/에 적용될 구성만 여기에 지정한다.
+    }
+}
+```
+
+단순히 폴더 이름 대신 복잡한 패턴을 사용할 수 있다.
+
+location 블록의 구문은 다음과 같다.
+
+```conf
+location [=|~|~*|^~|@] 패턴 { ... }
+```
+
+처음 부분의 생략 가능한 인자는 위치 조정 부호라고 부르는 기호로, 지정된 패턴을 Nginx에 적용하는 방법을 정할 뿐 아니라 패턴의 성격도 정의한다.
+
+### = 조정 부호
+
+요청된 문서 URI는 반드시 지정된 패턴과 정확히 일치해야 한다.
+
+여기에 쓰이는 패턴은 단순히 문자열이어야 한다. 정규식은 사용할 수 없다.
+
+```conf
+server {
+    server_name website.com
+    location = /admin/ {
+        ...
+    }
+}
+```
+
+위의 location 블록의 구성은 다음과 같이 처리된다.
+
+- `http://website.com/abcd`에 적용됨 (정확히 일치)
+- `http://website.com/ABCD`에 적용될 수 있음 (운영체제가 대소문자를 구분하는 파일 시스템을 사용할 때에만 대소문자를 구분)
+- `http://website.com/abcd?param1&param2`에 적용됨 (질의 문자열 인자에 상관 없음)
+- `http://website.com/abcd/`에 적용되지 않음
+- `http://website.com/abcde`에 적용되지 않음
+
+### 조정 부호 생략
+
+요청된 문서 URI가 지정된 패턴으로 시작해야 한다. 정규식은 사용할 수 없다.
+
+```conf
+server {
+    server_name website.com
+    location  /admin/ {
+        ...
+    }
+}
+```
+
+위의 location 블록의 구성은 다음과 같이 처리된다.
+
+- `http://website.com/abcd`에 적용됨 (정확히 일치)
+- `http://website.com/ABCD`에 적용될 수 있음 (운영체제가 대소문자를 구분하는 파일 시스템을 사용할 때에만 대소문자를 구분)
+- `http://website.com/abcd?param1&param2`에 적용됨 (질의 문자열 인자에 상관 없음)
+- `http://website.com/abcd/`에 적용됨
+- `http://website.com/abcde`에 적용됨
