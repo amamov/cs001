@@ -11,3 +11,5 @@
 ### 5. [Computer Network](https://github.com/amamov/cs001/tree/main/4%20Network)
 
 ### 6. [Database](https://github.com/amamov/cs001/tree/main/5%20GIT)
+
+### 7. [Uncategorized](https://github.com/amamov/cs001/tree/main/5%20GIT)
