@@ -1,15 +1,15 @@
 ## Computer Science Theory For Software Engineer
 
-### 0. [C Unmanaged Programming](https://github.com/amamov/cs001/tree/main/)
+### 0. [C Unmanaged Programming](https://github.com/amamov/cs001/tree/main/C%20Programming)
 
-### 1. [Data Structure](https://github.com/amamov/Computer-Science/tree/main/1%20Algorithm)
+### 1. [Data Structure](https://github.com/amamov/cs001/tree/main/Data%20Structure)
 
-### 2. [Algorithm](https://github.com/amamov/cs001/tree/main/2%20Computer%20System)
+### 2. [Algorithm](https://github.com/amamov/cs001/tree/main/Algorithm)
 
-### 4. [Operating System](https://github.com/amamov/cs001/tree/main/3%20Database)
+### 4. [Operating System](https://github.com/amamov/cs001/tree/main/Operating%20System)
 
-### 5. [Computer Network](https://github.com/amamov/cs001/tree/main/4%20Network)
+### 5. [Computer Network](https://github.com/amamov/cs001/tree/main/Computer%20Network)
 
-### 6. [Database](https://github.com/amamov/cs001/tree/main/5%20GIT)
+### 6. [Database](https://github.com/amamov/cs001/tree/main/Database)
 
-### 7. [Uncategorized](https://github.com/amamov/cs001/tree/main/5%20GIT)
+### 7. [Uncategorized](https://github.com/amamov/cs001/tree/main/Uncategorized)
