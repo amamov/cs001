@@ -4,7 +4,7 @@
 
 ## Contents
 
-1. [컴퓨터 구조]()
+1. [컴퓨터 구조](https://github.com/amamov/cs001/blob/main/Operating%20System/01_%EC%BB%B4%ED%93%A8%ED%84%B0_%EA%B5%AC%EC%A1%B0.md)
 
 2. [운영체제 구조]()
 
