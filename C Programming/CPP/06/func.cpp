@@ -8,6 +8,8 @@ int total(int x, int y)
     return x + y;
 }
 
+int protofunc(int x); // 프로토 타입
+
 int main()
 {
     const double PI = 3.14159226;
@@ -31,4 +33,9 @@ int main()
     cout << "앒파벳 문자의 개수 : " << count << endl;
 
     return 0;
+}
+
+int protofunc(int x)
+{
+    return x;
 }
