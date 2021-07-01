@@ -17,7 +17,7 @@ int main()
 
     int x = 10;
     int *px = &x; // px에 x의 주소를 저장한다.
-    int &rx = x;  // x의 별명 rx : 사실은 내부적으로는 포인터로 동작한다.
+    int &rx = x;  // x의 별명 rx : 사실은 내부적으로는 포인터로 동작한다. 레퍼런스가 포인터보다 안전하므로 레퍼런스를 쓰자!
 
     cout << &x << "  " << px << "  " << &rx << endl; // 0x7ffeefbff1b8  0x7ffeefbff1b8  0x7ffeefbff1b8
     cout << x << "  " << *px << "  " << rx << endl;  // 10  10  10
