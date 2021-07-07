@@ -2,15 +2,11 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     int a = 17, b = 3, max = 0;
-    if (a > b)
-    {
+    if (a > b) {
         max = a;
-    }
-    else
-    {
+    } else {
         max = b;
     }
 

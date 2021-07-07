@@ -8,8 +8,7 @@
 //* ::는 스코프 연산자 (범위 지정)
 //* endl : 한 줄 바꿀 때
 
-int main()
-{
+int main() {
     std::cout << "hello world!" << std::endl;
     return 0;
 }
