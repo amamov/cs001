@@ -4,17 +4,14 @@
 
 using namespace std;
 
-void swap(int *x, int *y)
-{
+void swap(int *x, int *y) {
     int tmp = 0;
     tmp = *x;
     *x = *y;
     *y = tmp;
 }
 
-int main()
-{
-
+int main() {
     int x = 1;
     int y = 2;
 
