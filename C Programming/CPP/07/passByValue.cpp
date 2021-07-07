@@ -4,25 +4,22 @@
 
 using namespace std;
 
-void func(int y)
-{
-    cout << "Y addr : " << &y << endl; // 0x7ffeefbff1a8
-    cout << "In func : " << y << endl; // 10
+void func(int y) {
+    cout << "Y addr : " << &y << endl;  // 0x7ffeefbff1a8
+    cout << "In func : " << y << endl;  // 10
     y = 50;
-    cout << "In func : " << y << endl; // 50
+    cout << "In func : " << y << endl;  // 50
 }
 
-int main()
-{
-
+int main() {
     int x = 10;
 
-    cout << "X addr : " << &x << endl; // 0x7ffeefbff17c
-    cout << x << endl;                 // 10
+    cout << "X addr : " << &x << endl;  // 0x7ffeefbff17c
+    cout << x << endl;                  // 10
 
-    func(x); //* Call(pass) By Value
+    func(x);  //* Call(pass) By Value
 
-    cout << x << endl; // 10
+    cout << x << endl;  // 10
 
     return 0;
 }

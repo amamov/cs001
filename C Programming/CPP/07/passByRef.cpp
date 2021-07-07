@@ -4,25 +4,23 @@
 
 using namespace std;
 
-void func(int &y) // 변수 X의 alias
+void func(int &y)  // 변수 X의 alias
 {
-    cout << "Y addr : " << &y << endl; // 0x7ffeefbff1b8
-    cout << "In func : " << y << endl; // 10
-    y = 50;                            //* X의 주소를 공유하고 있기 때문에 X의 값을 바꾼다.
-    cout << "In func : " << y << endl; // 50
+    cout << "Y addr : " << &y << endl;  // 0x7ffeefbff1b8
+    cout << "In func : " << y << endl;  // 10
+    y = 50;                             //* X의 주소를 공유하고 있기 때문에 X의 값을 바꾼다.
+    cout << "In func : " << y << endl;  // 50
 }
 
-int main()
-{
-
+int main() {
     int x = 10;
 
-    cout << "X addr : " << &x << endl; // 0x7ffeefbff1b8
-    cout << x << endl;                 // 10
+    cout << "X addr : " << &x << endl;  // 0x7ffeefbff1b8
+    cout << x << endl;                  // 10
 
-    func(x); //* Call(pass) By Reference
+    func(x);  //* Call(pass) By Reference
 
-    cout << x << endl; //* 50
+    cout << x << endl;  //* 50
 
     return 0;
 }
