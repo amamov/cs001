@@ -4,33 +4,27 @@
 
 using namespace std;
 
-void func()
-{
+void func() {
     cout << "hello world!!" << endl;
 }
 
-void func(int x)
-{
+void func(int x) {
     cout << "hello world!!" << x << endl;
 }
 
-int func(float x, float y)
-{
+int func(float x, float y) {
     cout << "hello world!!" << x << y << endl;
     return x + y;
 }
-int defaultFunc(int x = 19)
-{
+int defaultFunc(int x = 19) {
     return x;
 }
-int func(double x)
-{
+int func(double x) {
     cout << "hello world!!" << x << endl;
     return x;
 }
 
-int main()
-{
+int main() {
     func();
     func(12);
     func(17.77);
